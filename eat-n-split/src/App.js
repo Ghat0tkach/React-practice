@@ -44,8 +44,14 @@ function App(){
     );
   }
   function handleSplitBill(value){
-       console.log(value)
+       setFriends((friends)=>friends.map(
+        (friend)=>friend.id===selectedFriend.id?
+           {...friend,balance:friend.balance +value}
+       : friend
+           )
+       );
   }
+      
   return (
     <div className="app">
       <div className="sidebar">
@@ -169,7 +175,7 @@ function FormSplitBill({selectedFriend, onSplitbill}){
   }
 
   return (
-    <form className='form-split-bill'>
+    <form className='form-split-bill ' onSubmit={handleSubmit}>
       <h2>Split a bill with {selectedFriend.name}</h2>
       <label>💵 Bill Value</label>
       <input type="text"
