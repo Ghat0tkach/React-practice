@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect,useState } from "react";
 
 const tempMovieData = [
   {
@@ -46,9 +46,47 @@ const tempWatchedData = [
     userRating: 9,
   },
 ];
+const average = (arr) =>
+  arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
+
+const KEY="3b81e9e2";
+
 export default function App() {
-  const [movies, setMovies] = useState(tempMovieData);
-  const [watched, setWatched] = useState(tempWatchedData);
+  const [movies, setMovies] = useState([]);
+  const [watched, setWatched] = useState([]);
+  const [isLoading, setLoading]=useState(false);
+  const [error,setError]=useState("");
+  const query="inception";
+  
+  useEffect(function(){
+    
+  async function fetchmovies(){
+  try{
+    setLoading(true);
+    const res=await fetch(`
+    http://www.omdbapi.com/?i=tt3896198&apikey=${KEY}&s=${query}`
+    )
+
+  if(!res.ok) throw new Error("something went wrong , check your internet connection");
+
+    const data=await res.json();
+    if(data.Response === "False") throw new Error ("Movie not found");
+    setMovies(data.Search);
+    
+  }
+  catch(err){
+    
+      setError(err.message);
+    }
+  finally{
+    setLoading(false);
+  }  
+  }
+  fetchmovies();
+  },[]
+)
+
+
 
   return (
     <>
@@ -60,7 +98,9 @@ export default function App() {
      </Navbar>
      <Main>
        <Box>
-         <MovieList movies={movies}/>
+         {isLoading && <Loader/>}
+         {!isLoading && !error && <MovieList movies={movies}/>  }
+         {error && <ErrorMessage message={error}/>}
        </Box>
       
        <Box>
@@ -70,6 +110,15 @@ export default function App() {
      </Main>
     </>
   );
+}
+function Loader(){
+  return <p className="loader">Loading...</p>;
+}
+
+function ErrorMessage({message}){
+  return <p className="error">
+    <span>⛔</span>{message}
+  </p>
 }
 
 function Navbar({children}){
@@ -242,5 +291,3 @@ function WatchedMovie({movie}){
   </li>
   );
 }
-const average = (arr) =>
-  arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
