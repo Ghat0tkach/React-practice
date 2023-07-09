@@ -121,8 +121,8 @@ function Navbar({children}){
 function Logo(){
  return(
   <div className="logo">
-  <span role="img">🍿</span>
-  <h1>usePopcorn</h1>
+  <span role="img">🎬</span>
+  <h1>MovieBuzz</h1>
 </div>
  );
 }
@@ -272,6 +272,10 @@ function SelectedMovie({selectedID,onCloseMovie,handleAddWatch,watched}){
 useEffect(function(){
       if(!title) return;
       document.title=`Movie | ${title}`;
+
+      return function(){
+        document.title="MovieBuzz";
+      }
 },[title])
   return (
   <div className="details">
