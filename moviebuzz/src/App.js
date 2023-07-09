@@ -267,6 +267,12 @@ function SelectedMovie({selectedID,onCloseMovie,handleAddWatch,watched}){
   }
   fetchmovies();
 },[selectedID]);
+
+
+useEffect(function(){
+      if(!title) return;
+      document.title=`Movie | ${title}`;
+},[title])
   return (
   <div className="details">
     {isLoading? <Loader/>:
