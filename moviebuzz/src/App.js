@@ -40,7 +40,7 @@ export default function App() {
     setLoading(true);
     setError("");
     const res=await fetch(`
-    http://www.omdbapi.com/?i=tt3896198&apikey=${KEY}&s=${query}`
+    https://www.omdbapi.com/?i=tt3896198&apikey=${KEY}&s=${query}`
     )
 
   if(!res.ok) throw new Error("something went wrong , check your internet connection");
@@ -258,7 +258,7 @@ function SelectedMovie({selectedID,onCloseMovie,handleAddWatch,watched}){
     async function fetchmovies(){
       setLoading(true);
      const res=await fetch(
-    `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedID}`
+    `https://www.omdbapi.com/?apikey=${KEY}&i=${selectedID}`
     );
     const data=await res.json();
    
