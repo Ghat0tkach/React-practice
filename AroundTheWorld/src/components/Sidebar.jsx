@@ -1,25 +1,23 @@
+import { Outlet } from "react-router-dom";
+import AppNav from "./AppNav";
 import Logo from "./Logo";
 import styles from "./Sidebar.module.css";
-import AppNav from "./AppNav";
-import { Outlet } from "react-router-dom";
+
 function Sidebar() {
   return (
     <div className={styles.sidebar}>
-    <Logo/>
-    <AppNav/>
-    <Outlet/>
+      <Logo />
+      <AppNav />
 
-    <footer className={styles.footer}>
+      <Outlet />
+
+      <footer className={styles.footer}>
         <p className={styles.copyright}>
-            &copy; copyright {new Date().getFullYear()}
-            by AroundTheWorld Inc.
+          &copy; Copyright {new Date().getFullYear()} by WorldWise Inc.
         </p>
-    </footer>
-    
-   
-
+      </footer>
     </div>
-  )
+  );
 }
 
 export default Sidebar;

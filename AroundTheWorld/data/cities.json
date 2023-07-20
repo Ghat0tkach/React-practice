@@ -3,7 +3,7 @@
     {
       "cityName": "Lisbon",
       "country": "Portugal",
-      "emoji": "PT",
+      "emoji": "🇵🇹",
       "date": "2027-10-31T15:59:59.138Z",
       "notes": "My favorite city so far!",
       "position": {
@@ -35,7 +35,30 @@
         "lng": 13.376933665713324
       },
       "id": 98443197
+    },
+    {
+      "cityName": "Nijar",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2023-04-03T07:47:59.202Z",
+      "notes": "",
+      "position": {
+        "lat": "36.967508314568164",
+        "lng": "-2.13128394200588"
+      },
+      "id": 98443198
+    },
+    {
+      "cityName": "Chaurai",
+      "country": "India",
+      "emoji": "🇮🇳",
+      "date": "2023-07-20T08:47:01.393Z",
+      "notes": "",
+      "position": {
+        "lat": "22.100273156516327",
+        "lng": "79.23683166503908"
+      },
+      "id": 98443199
     }
-   
   ]
 }
