@@ -15,9 +15,6 @@ export default function App() {
   const [error,setError]=useState("");
   const [selectedID , setSelectedID]=useState(null);
   
- 
-  
-  
   
   function handleSelectMovie(id){
     setSelectedID(selectedID=>id===selectedID?null :id );
