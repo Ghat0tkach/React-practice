@@ -7,6 +7,7 @@ const average = (arr) =>
 
 const KEY="3b81e9e2";
 
+
 export default function App() {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
